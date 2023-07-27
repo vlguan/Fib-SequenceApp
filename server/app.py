@@ -22,7 +22,7 @@ def create_app():
     # Don't know if pulling it will also require change to direct path
     # Add extra / and type out direct path to the instanced database.db
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
-        "DB_PATH", 'sqlite:///database.db'
+        "DB_PATH", 'sqlite:///server/instance/database.db'
     )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
