@@ -7,10 +7,11 @@ metadata = MetaData()
 
 # Define the table
 fibonacci_numbers = Table(
-    'FibonacciNumbers', metadata,
+    'fibonacci_numbers', metadata,
     Column('N', Integer, primary_key=True),
     Column('fib_num', Integer),
 )
 
 # Create the table
+metadata.drop_all(engine)
 metadata.create_all(engine)
