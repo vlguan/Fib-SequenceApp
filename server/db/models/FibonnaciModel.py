@@ -11,5 +11,5 @@ class Fibonnaci(db.Model):
         db.session.commit()
     def getNumbers(n):
         return Fibonnaci.query.filter(
-            Fibonnaci.N <= n
+            Fibonnaci.n <= n
         ).all()

@@ -18,9 +18,6 @@ def create_app():
     from api import api as api_blueprint
 
     app = Flask(__name__)
-    # Unaltered sql Call, but I had to change to a specific path on my pc for some reason. 
-    # Don't know if pulling it will also require change to direct path
-    # Add extra / and type out direct path to the instanced database.db
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
         "DB_PATH", 'sqlite:///server/instance/database.db'
     )
