@@ -20,10 +20,6 @@ def calculate_fib():
     query_params = request.args.to_dict()
     n = int(query_params["n"])
     fib = FibonacciNumbers.getNumbers(n)
-    # create an array of the existing sequence
-    # pass into fibo, return whatever new sequence as an array
-    # add to db
-    # return new sequence
     final = []
     if fib != []:
         for i in range(len(fib)):
