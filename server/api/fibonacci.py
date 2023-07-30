@@ -1,14 +1,13 @@
 from flask import jsonify, request
 
 from api import api
-from db.db import db
 from db.models.FibonnaciModel import FibonacciNumbers
 
 
-def fibo(start, target):
-        a, b = start[-2], start[-1]
+def fibo(start_sequence, target):
+        a, b = start_sequence[-2], start_sequence[-1]
         print(a,b)
-        fib_sequence = start
+        fib_sequence = start_sequence
         while len(fib_sequence) < target:
             next_fib = a + b
             fib_sequence.append(next_fib)
@@ -20,21 +19,20 @@ def calculate_fib():
     query_params = request.args.to_dict()
     n = int(query_params["n"])
     fib = FibonacciNumbers.getNumbers(n)
-    final = []
+    final_sequence = []
     if fib != []:
-        for i in range(len(fib)):
-            final.append(fib[i].fib_num)
+        final_sequence = [f.fib_num for f in fib]
     if fib == []:
         # no numbers in look up table
-        final = fibo([0, 1], n)
-        for i in range(len(final)):
-            FibonacciNumbers.insertNumbers(i + 1, final[i])
-        return jsonify(final)
+        final_sequence = fibo([0, 1], n)
+        for i in range(len(final_sequence)):
+            FibonacciNumbers.insertNumbers(i + 1, final_sequence[i])
+        return jsonify(final_sequence)
     elif fib[-1].N == n:
-        return jsonify(final)
+        return jsonify(final_sequence)
     else:
         # numbers in look up table but doesnt full reach n
-        result = fibo(final, n)
+        result = fibo(final_sequence, n)
         # store numbers between
         for i in range(len(fib), n):
             FibonacciNumbers.insertNumbers(i + 1, result[i])
