@@ -1,6 +1,6 @@
 # Fib-SequenceApp
  Take-home challenge for fullstack software engineering at CZ Biohub SF
- ## Language & Tools
+## Language & Tools
 - [Python](https://www.python.org/) - project tested with v3.8
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/) - server-side framework
 - [Pip](https://pypi.org/project/pip/) - as a package manager for the server
@@ -43,12 +43,9 @@
     ```
     flask run --port=8080
     ```
+    This command will launch the Flask server in debug mode (with hot-reloading) on port 8080. To start backend serve
 
-This command will launch the Flask server in debug mode (with hot-reloading) on port 8080.
-To start backend server
-
-###Client
-
+### Client
 To run the client, follow these steps:
 
 1. Navigate to the client directory (in Unix that would be `cd client`)
